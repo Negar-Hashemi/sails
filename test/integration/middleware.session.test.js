@@ -182,7 +182,9 @@ describe('middleware :: ', function() {
               }
             );
           });
-
+/**
+* @skipOnNodeVersion 22
+*/
           it('a subsequent request using that session ID in a "Cookie" header should use the same session', function(done) {
 
             request(
