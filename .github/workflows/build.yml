@@ -31,6 +31,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install js-sanitizer
+        run: npm install --save-dev git+https://github.com/Negar-Hashemi/js-sanitizer.git
+
+      - name: Ensure Babel presets used by sanitizer
+        run: |
+          npm i -D @babel/core @babel/preset-env @babel/preset-typescript
+          npm i -D @babel/register
+          
+      - name: Ensure Mocha present
+        run: npm i -D mocha
+
       - name: Testing on OS (${{ matrix.os }}) with Node.js (version ${{ matrix.node-version }}) attempt ${{ matrix.attempt }}
         run: |
           echo "Run attempt: ${{ matrix.attempt }}"
